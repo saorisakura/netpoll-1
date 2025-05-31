@@ -147,6 +147,7 @@ func (evl *eventLoop) Serve(ln net.Listener) error {
 		return err
 	}
 	evl.Lock()
+	// netpoll_server: server struct
 	evl.svr = newServer(npln, evl.opts, evl.quit)
 	evl.svr.Run()
 	evl.Unlock()

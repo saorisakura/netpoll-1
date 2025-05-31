@@ -55,6 +55,9 @@ func (op *FDOperator) Control(event PollEvent) error {
 	if event == PollDetach && atomic.AddInt32(&op.detached, 1) > 1 {
 		return nil
 	}
+	// pollmanager.Pick()
+	// defaultPoll with different platform
+	// linux is epoll control syscall
 	return op.poll.Control(op, event)
 }
 

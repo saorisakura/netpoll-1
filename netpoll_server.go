@@ -50,6 +50,7 @@ func (s *server) Run() (err error) {
 		OnRead: s.OnRead,
 		OnHup:  s.OnHup,
 	}
+	// open multi epoll event
 	s.operator.poll = pollmanager.Pick()
 	err = s.operator.Control(PollReadable)
 	if err != nil {

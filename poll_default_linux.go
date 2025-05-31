@@ -246,6 +246,7 @@ func (p *defaultPoll) Control(operator *FDOperator, event PollEvent) error {
 	fd := operator.FD
 	var op int
 	var evt epollevent
+	// associate listener and handler passed to eventloop(e.g. echohandler)
 	p.setOperator(unsafe.Pointer(&evt.data), operator)
 	switch event {
 	case PollReadable: // server accept a new connection and wait read
